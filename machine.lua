@@ -1,5 +1,5 @@
 
-minetest.register_node("mydeck:machine", {
+core.register_node("mydeck:machine", {
 	description = "Deck Machine",
 	tiles = {
 		"mydeck_hwood.png",
@@ -36,19 +36,19 @@ minetest.register_node("mydeck:machine", {
 	},
 
 	after_place_node = function(pos, placer)
-	local meta = minetest.get_meta(pos);
+	local meta = core.get_meta(pos);
 			meta:set_string("owner",  (placer:get_player_name() or ""));
 			meta:set_string("infotext",  "Deck Machine (owned by " .. (placer:get_player_name() or "") .. ")");
 		end,
 
 can_dig = function(pos,player)
-	local meta = minetest.get_meta(pos);
+	local meta = core.get_meta(pos);
 	local inv = meta:get_inventory()
 	return inv:is_empty("ingot") and inv:is_empty("res")
 end,
 
 on_construct = function(pos)
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	meta:set_string("formspec", "invsize[9,10;]"..
 		"background[-0.15,-0.25;9.3,10.75;mydeck_background.png]"..
 		"label[6,4;Wood:]"..
@@ -103,7 +103,7 @@ allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to
 end,
 
 on_receive_fields = function(pos, formname, fields, sender)
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	local inv = meta:get_inventory()
 
 	local material_group = "wood"
@@ -174,7 +174,7 @@ on_receive_fields = function(pos, formname, fields, sender)
 		return false
 	end
 
-	if ingotstack:is_empty() or minetest.get_item_group(ingotstack:get_name(), material_group) == 0 then
+	if ingotstack:is_empty() or core.get_item_group(ingotstack:get_name(), material_group) == 0 then
 		return true
 	end
 	if not resstack:is_empty() and resstack:get_name() ~= shape then
@@ -184,14 +184,14 @@ on_receive_fields = function(pos, formname, fields, sender)
 	for i = 0, anzahl-1 do
 		inv:add_item("res", shape)
 	end
-	if minetest.setting_getbool("creative_mode") ~= true then
+	if core.setting_getbool("creative_mode") ~= true then
 		ingotstack:take_item()
 	end
 	inv:set_stack("ingot" ,1, ingotstack)
 end
 })
 
-minetest.register_craft({
+core.register_craft({
 		output = 'mydeck:machine',
 		recipe = {
 			{'', '', ''},

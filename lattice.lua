@@ -1,4 +1,4 @@
-minetest.register_node("mydeck:lattice", {
+core.register_node("mydeck:lattice", {
 	description = "Lattice",
 	tiles = {
 		"mydeck_hwood.png",

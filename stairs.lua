@@ -1,4 +1,4 @@
-minetest.register_node("mydeck:stairs", {
+core.register_node("mydeck:stairs", {
 	description = "Stairs",
 	tiles = {
 		"mydeck_hwood.png",
@@ -60,34 +60,34 @@ minetest.register_node("mydeck:stairs", {
 
 })
 
-minetest.register_abm({
+core.register_abm({
 	nodenames = {"mydeck:stairs"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node)
-		local nodeu = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
+		local nodeu = core.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
 
 
 		if nodeu == "air" then
-		   minetest.set_node(pos,{name = "mydeck:stairsb", param2 = node.param2})
+		   core.set_node(pos,{name = "mydeck:stairsb", param2 = node.param2})
 		end
 	end,
 })
-minetest.register_abm({
+core.register_abm({
 	nodenames = {"mydeck:stairsb"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node)
-		local nodeu = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
+		local nodeu = core.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
 
 
 		if nodeu ~= "air" then
-		   minetest.set_node(pos,{name = "mydeck:stairs", param2 = node.param2})
+		   core.set_node(pos,{name = "mydeck:stairs", param2 = node.param2})
 		end
 	end,
 })
 
-minetest.register_node("mydeck:stairsb", {
+core.register_node("mydeck:stairsb", {
 	description = "Stairs",
 	tiles = {
 		"mydeck_hwood.png",
@@ -161,7 +161,7 @@ minetest.register_node("mydeck:stairsb", {
 		},
 })
 
-minetest.register_node("mydeck:stairs_ocorner", {
+core.register_node("mydeck:stairs_ocorner", {
 	description = "Stairs Outside Corner",
 	tiles = {
 		"mydeck_hwood.png",
@@ -226,7 +226,7 @@ minetest.register_node("mydeck:stairs_ocorner", {
 		},
 })
 
-minetest.register_node("mydeck:stairs_icorner", {
+core.register_node("mydeck:stairs_icorner", {
 	description = "Stairs Inside Corner",
 	tiles = {
 		"mydeck_hwood.png",
@@ -292,7 +292,7 @@ minetest.register_node("mydeck:stairs_icorner", {
 		},
 })
 
-minetest.register_node("mydeck:stairs_railr", {
+core.register_node("mydeck:stairs_railr", {
 	description = "Right Hand Rail",
 	tiles = {
 		"mydeck_hwood.png",
@@ -341,24 +341,24 @@ minetest.register_node("mydeck:stairs_railr", {
 		},
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		
-		local node = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
-		local nodeu = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
+		local node = core.get_node({x=pos.x, y=pos.y-1, z=pos.z})
+		local nodeu = core.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
 
 		if nodeu == "mydeck:stairs" or
 		   nodeu == "mydeck:stairsb" or
 		   nodeu == "mydeck:stairss" or
 		   nodeu == "mydeck:stairsbs" then
-		   minetest.set_node(pos,{name = "mydeck:stairs_railr", param2=minetest.dir_to_facedir(placer:get_look_dir())})
+		   core.set_node(pos,{name = "mydeck:stairs_railr", param2=core.dir_to_facedir(placer:get_look_dir())})
 		else
 		
-		   minetest.set_node(pos,{name = "mydeck:stairs_railr_end", param2=minetest.dir_to_facedir(placer:get_look_dir())})
+		   core.set_node(pos,{name = "mydeck:stairs_railr_end", param2=core.dir_to_facedir(placer:get_look_dir())})
 		
 		end
 	end,
 })
 
 
-minetest.register_node("mydeck:stairs_raill", {
+core.register_node("mydeck:stairs_raill", {
 	description = "Left Hand Rail",
 	tiles = {
 		"mydeck_hwood.png",
@@ -407,24 +407,24 @@ minetest.register_node("mydeck:stairs_raill", {
 		},
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		
-		local node = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
-		local nodeu = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
+		local node = core.get_node({x=pos.x, y=pos.y-1, z=pos.z})
+		local nodeu = core.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
 
 		if nodeu == "mydeck:stairs" or
 		   nodeu == "mydeck:stairsb" or
 		   nodeu == "mydeck:stairss" or
 		   nodeu == "mydeck:stairsbs" then
-		   minetest.set_node(pos,{name = "mydeck:stairs_raill", param2=minetest.dir_to_facedir(placer:get_look_dir())})
+		   core.set_node(pos,{name = "mydeck:stairs_raill", param2=core.dir_to_facedir(placer:get_look_dir())})
 		else
 		
-		   minetest.set_node(pos,{name = "mydeck:stairs_raill_end", param2=minetest.dir_to_facedir(placer:get_look_dir())})
+		   core.set_node(pos,{name = "mydeck:stairs_raill_end", param2=core.dir_to_facedir(placer:get_look_dir())})
 		
 		end
 	end,
 })
 
 
-minetest.register_node("mydeck:stairs_railr_end", {
+core.register_node("mydeck:stairs_railr_end", {
 	description = "Stairs",
 	tiles = {
 		"mydeck_hwood.png",
@@ -461,7 +461,7 @@ minetest.register_node("mydeck:stairs_railr_end", {
 			}
 		},
 })
-minetest.register_node("mydeck:stairs_raill_end", {
+core.register_node("mydeck:stairs_raill_end", {
 	description = "Stairs",
 	tiles = {
 		"mydeck_hwood.png",

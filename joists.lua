@@ -1,5 +1,5 @@
 
-minetest.register_node("mydeck:joists", {
+core.register_node("mydeck:joists", {
 	description = "Deck Joists",
 	tiles = {
 		"mydeck_hwood.png^[transformR90",
@@ -30,7 +30,7 @@ minetest.register_node("mydeck:joists", {
 	},
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		
-		local nodeu = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
+		local nodeu = core.get_node({x=pos.x, y=pos.y-1, z=pos.z})
 		local p2 = nodeu.param2 + 1
 			if p2 >= 4 then 
 				p2 = 0
@@ -38,17 +38,17 @@ minetest.register_node("mydeck:joists", {
 
 
 		if nodeu.name == "mydeck:beam" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_beam", param2=p2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_beam", param2=p2})
 		end
 		if nodeu.name == "mydeck:beam_wbracket" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_beam_wbracket", param2=p2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_beam_wbracket", param2=p2})
 		end
 	end
 })
 
-minetest.register_node("mydeck:joists_side", {
+core.register_node("mydeck:joists_side", {
 	description = "Deck Joists Side",
 	tiles = {
 		"mydeck_hwood.png^[transformR90",
@@ -80,25 +80,25 @@ minetest.register_node("mydeck:joists_side", {
 	},
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		
-		local node = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
+		local node = core.get_node({x=pos.x, y=pos.y-1, z=pos.z})
 		local p2 = node.param2 + 1
 			if p2 >= 4 then 
 				p2 = 0
 			end
 
 		if node.name == "mydeck:beam_wbracket" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_side_beam_wbracket", param2=node.param2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_side_beam_wbracket", param2=node.param2})
 		end
 		if node.name == "mydeck:beam" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_side_beam", param2=node.param2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y-1, z=pos.z},{name = "mydeck:joists_side_beam", param2=node.param2})
 		end
 	end
 })
 
 
-minetest.register_node("mydeck:joists_end", {
+core.register_node("mydeck:joists_end", {
 	description = "Deck Joists with End Plate",
 	tiles = {
 		"mydeck_hwood.png^mydeck_joistend_ol.png^[transformR180",
@@ -130,7 +130,7 @@ minetest.register_node("mydeck:joists_end", {
 	},
 })
 
-minetest.register_node("mydeck:joists_side_end", {
+core.register_node("mydeck:joists_side_end", {
 	description = "Deck Joists Side with End Plate",
 	tiles = {
 		"mydeck_hwood.png^mydeck_joistend_ol.png",
@@ -163,7 +163,7 @@ minetest.register_node("mydeck:joists_side_end", {
 	},
 })
 
-minetest.register_node("mydeck:joists_endr", {
+core.register_node("mydeck:joists_endr", {
 	description = "Deck Joists Side with Wall Plate",
 	tiles = {
 		"mydeck_hwood.png^mydeck_joistend_ol.png",
@@ -195,7 +195,7 @@ minetest.register_node("mydeck:joists_endr", {
 	},
 })
 
-minetest.register_node("mydeck:joists_side_endr", {
+core.register_node("mydeck:joists_side_endr", {
 	description = "Deck Joists Side with Wall Plate",
 	tiles = {
 		"mydeck_hwood.png^mydeck_joistend_ol.png^[transformR180",

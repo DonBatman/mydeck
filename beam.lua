@@ -1,4 +1,4 @@
-minetest.register_node("mydeck:beam", {
+core.register_node("mydeck:beam", {
 	description = "Beam",
 	tiles = {
 		"mydeck_hwood.png^[transformR90",
@@ -22,41 +22,41 @@ minetest.register_node("mydeck:beam", {
 	},
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		
-		local node = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
-		local nodeu = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
-		local nodea = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
+		local node = core.get_node({x=pos.x, y=pos.y+1, z=pos.z})
+		local nodeu = core.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
+		local nodea = core.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
 
 
 		if nodeu == "mydeck:post" then
-		   minetest.set_node(pos,{name = "mydeck:beam_wbracket", param2=minetest.dir_to_facedir(placer:get_look_dir())})
+		   core.set_node(pos,{name = "mydeck:beam_wbracket", param2=core.dir_to_facedir(placer:get_look_dir())})
 		end
 
 		if nodea == "mydeck:joists" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:joists_beam", param2=node.param2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:joists_beam", param2=node.param2})
 		end
 
 		if nodea == "mydeck:joists_side" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:joists_side_beam", param2=node.param2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:joists_side_beam", param2=node.param2})
 		end
 
 		if nodea == "mydeck:deck_joists" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:deck_joists_beam", param2=node.param2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:deck_joists_beam", param2=node.param2})
 		end
 
 		if nodea == "mydeck:deck_joists_side" then
-		   minetest.remove_node(pos)
-		   minetest.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:deck_joists_side_beam", param2=node.param2})
+		   core.remove_node(pos)
+		   core.set_node({x=pos.x, y=pos.y+1, z=pos.z},{name = "mydeck:deck_joists_side_beam", param2=node.param2})
 		end
 
 		if nodeu == "mydeck:pile_wpost" then
-		   minetest.set_node(pos,{name = "mydeck:beam_wbracket", param2=minetest.dir_to_facedir(placer:get_look_dir())})
+		   core.set_node(pos,{name = "mydeck:beam_wbracket", param2=core.dir_to_facedir(placer:get_look_dir())})
 		end
 	end
 })
-minetest.register_node("mydeck:beam_wbracket", {
+core.register_node("mydeck:beam_wbracket", {
 	description = "Beam with Bracket",
 	tiles = {
 		"mydeck_hwood.png^[transformR90^mydeck_beambt_ol.png",
@@ -83,7 +83,7 @@ minetest.register_node("mydeck:beam_wbracket", {
 	}
 })
 
-minetest.register_node("mydeck:joists_beam", {
+core.register_node("mydeck:joists_beam", {
 	description = "Deck Joists with Beam",
 	tiles = {
 		"mydeck_hwood.png^[transformR90",
@@ -127,7 +127,7 @@ minetest.register_node("mydeck:joists_beam", {
 	},
 })
 
-minetest.register_node("mydeck:joists_beam_wbracket", {
+core.register_node("mydeck:joists_beam_wbracket", {
 	description = "Deck Joists with Beam and Bracket",
 	tiles = {
 		"mydeck_hwood.png^[transformR90",
@@ -174,7 +174,7 @@ minetest.register_node("mydeck:joists_beam_wbracket", {
 		}
 	},
 })
-minetest.register_node("mydeck:joists_side_beam", {
+core.register_node("mydeck:joists_side_beam", {
 	description = "Deck Joists side with Beam",
 	tiles = {
 		"mydeck_hwood.png^[transformR90",
@@ -219,7 +219,7 @@ minetest.register_node("mydeck:joists_side_beam", {
 		}
 	},
 })
-minetest.register_node("mydeck:joists_side_beam_wbracket", {
+core.register_node("mydeck:joists_side_beam_wbracket", {
 	description = "Deck Joists side with Beam and Bracket",
 	tiles = {
 		"mydeck_hwood.png^[transformR90",
@@ -267,7 +267,7 @@ minetest.register_node("mydeck:joists_side_beam_wbracket", {
 	},
 })
 
-minetest.register_node("mydeck:deck_joists_beam", {
+core.register_node("mydeck:deck_joists_beam", {
 	description = "Deck Joists with Beam",
 	tiles = {
 		"mydeck_hwood.png",
@@ -318,7 +318,7 @@ minetest.register_node("mydeck:deck_joists_beam", {
 	},
 })
 
-minetest.register_node("mydeck:deck_joists_beam_wbracket", {
+core.register_node("mydeck:deck_joists_beam_wbracket", {
 	description = "Deck Joists with Beam with Bracket",
 	tiles = {
 		"mydeck_hwood.png",
@@ -371,7 +371,7 @@ minetest.register_node("mydeck:deck_joists_beam_wbracket", {
 	},
 })
 
-minetest.register_node("mydeck:deck_joists_side_beam", {
+core.register_node("mydeck:deck_joists_side_beam", {
 	description = "Deck Joists side with Beam",
 	tiles = {
 		"mydeck_hwood.png",
@@ -422,7 +422,7 @@ minetest.register_node("mydeck:deck_joists_side_beam", {
 		}
 	},
 })
-minetest.register_node("mydeck:deck_joists_side_beam_wbracket", {
+core.register_node("mydeck:deck_joists_side_beam_wbracket", {
 	description = "Deck Joists side with Beam with Bracket",
 	tiles = {
 		"mydeck_hwood.png",

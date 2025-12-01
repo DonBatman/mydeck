@@ -1,4 +1,4 @@
-minetest.register_node("mydeck:rail", {
+core.register_node("mydeck:rail", {
 	description = "Deck Rail",
 	tiles = {
 		"mydeck_hwood.png",
@@ -36,7 +36,7 @@ minetest.register_node("mydeck:rail", {
 		}
 	}
 })
-minetest.register_node("mydeck:rail_corner", {
+core.register_node("mydeck:rail_corner", {
 	description = "Deck Rail Corner",
 	tiles = {
 		"mydeck_hwood.png",
@@ -82,7 +82,7 @@ minetest.register_node("mydeck:rail_corner", {
 		}
 	}
 })
-minetest.register_node("mydeck:rail_icorner", {
+core.register_node("mydeck:rail_icorner", {
 	description = "Deck Rail Corner",
 	tiles = {
 		"mydeck_hwood.png",
